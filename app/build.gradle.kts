@@ -71,6 +71,8 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.16.0")
     //FireBase AUTH
     implementation("com.google.firebase:firebase-auth-ktx:22.1.0")
+    //  Circular Image View
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 }
 
 

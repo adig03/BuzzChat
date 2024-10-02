@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.example.easychat.MainActivity
+import com.example.easychat.Main.MainActivity
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentIntroBinding
 import com.google.firebase.auth.FirebaseAuth

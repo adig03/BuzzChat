@@ -98,7 +98,7 @@ class SignUpFragment : Fragment() {
                     "user_name" to name,
                     "user_email" to email,
                     "status" to "default",
-                    "imageUrl" to ""
+                    "imageUrl" to "https://img.icons8.com/ios-filled/50/000000/person-male.png"
                 )
 
 

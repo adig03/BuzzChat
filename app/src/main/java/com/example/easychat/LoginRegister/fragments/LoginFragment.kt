@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.example.easychat.MainActivity
+import com.example.easychat.Main.MainActivity
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -47,6 +47,11 @@ class LoginFragment : Fragment() {
 
         binding.signInTextToSignUp.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
+
+        binding.forgotPass.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment
+            )
         }
 
         binding.loginButton.setOnClickListener {
