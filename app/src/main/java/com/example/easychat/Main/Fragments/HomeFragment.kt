@@ -1,4 +1,4 @@
-package com.example.easychat.Main
+package com.example.easychat.Main.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.bumptech.glide.Glide
 import com.example.easychat.MVVM.MainViewModel
 import com.example.easychat.R
+
 import com.example.easychat.adapters.UserAdapter
 import com.example.easychat.adapters.queryAdapter
 import com.example.easychat.databinding.FragmentHomeBinding
@@ -90,10 +90,9 @@ private lateinit var mainViewModel: MainViewModel
             adapter = queryAdapter
             layoutManager = GridLayoutManager(activity , 1 , HORIZONTAL , false)
         }
-
-
-
     }
+
+
 
 
 }

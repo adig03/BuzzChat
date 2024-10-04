@@ -1,4 +1,4 @@
-package com.example.easychat.Main
+package com.example.easychat.Main.Fragments
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -17,7 +17,6 @@ import com.example.easychat.LoginRegister.IntroActivity
 import com.example.easychat.MVVM.MainViewModel
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentSettingsBinding
-import com.example.easychat.utils.SharedPrefs
 import com.google.firebase.auth.FirebaseAuth
 
 

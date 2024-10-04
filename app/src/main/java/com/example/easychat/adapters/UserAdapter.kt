@@ -2,14 +2,16 @@ package com.example.easychat.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.easychat.Main.Fragments.HomeFragmentDirections
 import com.example.easychat.databinding.RvUsersItemBinding
 import com.example.easychat.utils.User
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(val binding: RvUsersItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -38,18 +40,13 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
 
         holder.itemView.setOnClickListener {
-            onItemClickListener?.let { click ->
-                click(user)
-            }
+        val action = HomeFragmentDirections.actionHomeFragment2ToChatFragment(user)
+           it.findNavController().navigate(action)
         }
     }
 
 
-    private var onItemClickListener: ((User) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (User) -> Unit) {
-        onItemClickListener = listener
-    }
 
     fun setUsers(newUsers: List<User>) {
         users = newUsers

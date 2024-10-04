@@ -1,4 +1,4 @@
-package com.example.easychat.Main
+package com.example.easychat.Main.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import com.example.easychat.MVVM.MainViewModel
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentProfileBinding
-import com.example.easychat.utils.loggedInUser
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
