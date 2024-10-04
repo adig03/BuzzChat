@@ -5,8 +5,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.easychat.R
 import com.example.easychat.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
         navController = navHostFragment.navController
+
+        val bottomNavigationView: BottomNavigationView = binding.bottomNav // assuming you have a BottomNavigationView in your ActivityMainBinding
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
         }
 
 

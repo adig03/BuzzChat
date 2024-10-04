@@ -6,6 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.example.easychat.MVVM.MainViewModel
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentProfileBinding
 import com.example.easychat.utils.loggedInUser
@@ -19,6 +23,7 @@ class ProfileFragment : Fragment() {
 private lateinit var binding : FragmentProfileBinding
 val firestore = FirebaseFirestore.getInstance()
 val auth = FirebaseAuth.getInstance()
+    private lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,30 +42,17 @@ val auth = FirebaseAuth.getInstance()
 
         binding.userLoggedInEmail.setText(auth.currentUser?.email)
 
-        val currentUser = loggedInUser.getLoggedInUser()
-
-        val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+     mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
 
-        currentUserUid?.let { uid ->
-            val userDocumentRef = firestore.collection("Users").document(uid)
+        mainViewModel.imageUrl.observe(viewLifecycleOwner , Observer {
+            Glide.with(requireContext()).load(it).into(binding.circleImageView)
+        })
+        mainViewModel.name.observe(viewLifecycleOwner , Observer {
+           binding.profileNameEt.setText(it.toString())
+        })
 
 
-            userDocumentRef.get().addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-
-                    val userName = documentSnapshot.getString("name")
-
-                    binding.profileNameEt.setText(userName)
-                } else {
-
-                    binding.profileNameEt.setText("No name found")
-                }
-            }.addOnFailureListener { exception ->
-
-                binding.profileNameEt.setText("Error retrieving name")
-            }
-        }
     }
 
     }

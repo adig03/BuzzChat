@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import com.bumptech.glide.Glide
 import com.example.easychat.MVVM.MainViewModel
 import com.example.easychat.R
 import com.example.easychat.adapters.UserAdapter
@@ -57,6 +58,10 @@ private lateinit var mainViewModel: MainViewModel
         setUpRecyclerViewForQuery()
 
         setUpRecyclerViewForUsers()
+
+     mainViewModel.imageUrl.observe(viewLifecycleOwner ,Observer{
+         Glide.with(requireContext()).load(it).into(binding.profileImage)
+     })
     }
 
     private fun setUpRecyclerViewForUsers() {

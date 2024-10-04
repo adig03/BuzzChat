@@ -34,7 +34,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
         Glide.with(holder.itemView.context)
             .load(user.imageUrl)
-            .into(holder.binding.UserImage)
+            .into(holder.binding.userImage)
 
 
         holder.itemView.setOnClickListener {

@@ -11,17 +11,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal"
-        android:paddingVertical="16dp"
+        android:paddingVertical="8dp"
         android:background="#F6F2F2"
         android:paddingHorizontal="8dp">
 
-        <ImageView
-            android:id="@+id/User_Image"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_marginStart="16dp"
             android:src="@drawable/user"/>
-        <LinearLayout
+
+<LinearLayout
             android:id="@+id/innerLL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="22304@iitu.ac.in"
                 android:layout_marginTop="8dp"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
 
         </LinearLayout>
