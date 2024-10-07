@@ -1,4 +1,4 @@
-package com.example.easychat.Main.Fragments
+package com.example.easychat.main.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
 import com.bumptech.glide.Glide
-import com.example.easychat.MVVM.MainViewModel
+import com.example.easychat.ChatViewModel
 import com.example.easychat.R
 
 import com.example.easychat.adapters.UserAdapter
@@ -27,7 +27,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 private lateinit var binding: FragmentHomeBinding
 private lateinit var queryAdapter: queryAdapter
 private lateinit var userAdapter: UserAdapter
-private lateinit var mainViewModel: MainViewModel
+private lateinit var chatViewModel: ChatViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,16 +50,16 @@ private lateinit var mainViewModel: MainViewModel
             findNavController().navigate(R.id.action_homeFragment2_to_profileFragment)
         }
 
-        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        chatViewModel = ViewModelProvider(requireActivity())[ChatViewModel::class.java]
 
-        mainViewModel.userRepo.getUsers().observe(viewLifecycleOwner, Observer { users ->
+        chatViewModel.userRepo.getUsers().observe(viewLifecycleOwner, Observer { users ->
             userAdapter.setUsers(users)
         })
         setUpRecyclerViewForQuery()
 
         setUpRecyclerViewForUsers()
 
-     mainViewModel.imageUrl.observe(viewLifecycleOwner ,Observer{
+     chatViewModel.imageUrl.observe(viewLifecycleOwner ,Observer{
          Glide.with(requireContext()).load(it).into(binding.profileImage)
      })
     }

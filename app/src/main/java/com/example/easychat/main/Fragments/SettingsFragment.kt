@@ -1,4 +1,4 @@
-package com.example.easychat.Main.Fragments
+package com.example.easychat.main.Fragments
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.easychat.LoginRegister.IntroActivity
-import com.example.easychat.MVVM.MainViewModel
+import com.example.easychat.ChatViewModel
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentSettingsBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private lateinit var binding:FragmentSettingsBinding
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var chatViewModel: ChatViewModel
     val auth = FirebaseAuth.getInstance()
     private lateinit var  progressDialog : ProgressDialog
 
@@ -45,16 +45,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        chatViewModel = ViewModelProvider(requireActivity())[ChatViewModel::class.java]
          progressDialog = ProgressDialog(activity)
         binding.settingsToProfile.setOnClickListener{
             findNavController().navigate(R.id.action_settingsFragment_to_profileFragment)
         }
 
-        mainViewModel.imageUrl.observe(viewLifecycleOwner , Observer {
+        chatViewModel.imageUrl.observe(viewLifecycleOwner , Observer {
             Glide.with(requireContext()).load(it).into(binding.profileImage)
         })
-        mainViewModel.name.observe(viewLifecycleOwner , Observer {
+        chatViewModel.name.observe(viewLifecycleOwner , Observer {
             binding.loggedUsername.text = it.toString()
         })
 

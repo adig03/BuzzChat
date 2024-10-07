@@ -1,4 +1,4 @@
-package com.example.easychat.MVVM
+package com.example.easychat
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

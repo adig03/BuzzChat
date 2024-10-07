@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-import com.example.easychat.Main.MainActivity
+import com.example.easychat.main.MainActivity
 import com.example.easychat.R
 import com.example.easychat.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -91,6 +91,8 @@ class LoginFragment : Fragment() {
                         if(isVerified  == true) {
                             val i = Intent(activity, MainActivity::class.java)
                             startActivity(i)
+
+                          activity?.finish()
                         }
                         else{
                             Toast.makeText(activity , "Please verify your email"  ,Toast.LENGTH_SHORT).show()

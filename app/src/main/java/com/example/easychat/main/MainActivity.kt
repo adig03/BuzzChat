@@ -1,6 +1,7 @@
-package com.example.easychat.Main
+package com.example.easychat.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -14,23 +15,32 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding =ActivityMainBinding.inflate(layoutInflater)
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        // Find NavHostFragment and get the NavController
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
         navController = navHostFragment.navController
 
-        val bottomNavigationView: BottomNavigationView = binding.bottomNav // assuming you have a BottomNavigationView in your ActivityMainBinding
+        // Set up BottomNavigationView with NavController
+        val bottomNavigationView: BottomNavigationView = binding.bottomNav
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.chatFragment -> {
+                    bottomNavigationView.visibility = View.GONE
+                }
+                else -> {
+                    bottomNavigationView.visibility = View.VISIBLE
+                }
+            }
         }
 
-
-
-
-
     }
+}

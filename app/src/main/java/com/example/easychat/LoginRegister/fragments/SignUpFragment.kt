@@ -85,6 +85,8 @@ class SignUpFragment : Fragment() {
                             "Verification mail has been sent , Please verify your mail",
                             Toast.LENGTH_SHORT
                         ).show()
+
+
                     }?.addOnFailureListener {
                         Toast.makeText(activity, "exception: ${it.toString()} ", Toast.LENGTH_SHORT)
                             .show()

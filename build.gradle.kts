@@ -7,11 +7,11 @@ buildscript {
     dependencies {
         val nav_version = "2.7.7"
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version") // Safe Args plugin for Navigation
+        classpath("com.google.gms:google-services:4.3.15") // Google Services plugin classpath
     }
 }
 
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
-    id("com.google.gms.google-services") version "4.3.15" apply false // Updated Google Services version
 }
