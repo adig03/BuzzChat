@@ -40,4 +40,4 @@ To run **BuzzChat** locally, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/BuzzChat.git
+   git clone https://github.com/adig03/BuzzChat.git
